@@ -26,26 +26,26 @@ public class BanCo {
 		ocos = new Oco[14];
 		for (int i = 1; i < 6; i++) {
 			ocos[i] = new Oco(i * WIDTH + X, Y * 3, WIDTH+2, HEIGHT+2, squares[i].getViTri(), squares[i].getValue(),
-					squares[i].isQuan());
+					squares[i].isQuan(), squares[i].hasQuan());
 		}
 		ocos[7] = new Oco(X + WIDTH * (5), Y * 4, WIDTH+2, HEIGHT, squares[7].getViTri(), squares[7].getValue(),
-				squares[7].isQuan());
+				squares[7].isQuan(), squares[7].hasQuan());
 		ocos[8] = new Oco(X + WIDTH * (4), Y * 4, WIDTH+2, HEIGHT, squares[8].getViTri(), squares[8].getValue(),
-				squares[8].isQuan());
+				squares[8].isQuan(), squares[8].hasQuan());
 		ocos[9] = new Oco(X + WIDTH * (3), Y * 4, WIDTH+2, HEIGHT, squares[9].getViTri(), squares[9].getValue(),
-				squares[9].isQuan());
+				squares[9].isQuan(), squares[9].hasQuan());
 		ocos[10] = new Oco(X + WIDTH * (2), Y * 4, WIDTH+2, HEIGHT, squares[10].getViTri(), squares[10].getValue(),
-				squares[10].isQuan());
+				squares[10].isQuan(), squares[10].hasQuan());
 		ocos[11] = new Oco(X + WIDTH * (1), Y * 4, WIDTH+2, HEIGHT, squares[11].getViTri(), squares[11].getValue(),
-				squares[11].isQuan());
+				squares[11].isQuan(), squares[11].hasQuan());
 		ocos[0] = new Oco(X, Y * 3, WIDTH+2, HEIGHT_QUAN, squares[0].getViTri(), squares[0].getValue(),
-				squares[0].isQuan());
+				squares[0].isQuan(), squares[0].hasQuan());
 		ocos[6] = new Oco(WIDTH * 6 + X, Y * 3, WIDTH, HEIGHT_QUAN, squares[6].getViTri(), squares[6].getValue(),
-				squares[6].isQuan());
+				squares[6].isQuan(), squares[6].hasQuan());
 		ocos[12] = new Oco(WIDTH * 3 + X, Y * 2 - 20, WIDTH, HEIGHT, squares[12].getViTri(), squares[12].getValue(),
-				squares[12].isQuan());
+				squares[12].isQuan(), squares[12].hasQuan());
 		ocos[13] = new Oco(WIDTH * 3 + X, 470, WIDTH, HEIGHT, squares[13].getViTri(), squares[13].getValue(),
-				squares[13].isQuan());
+				squares[13].isQuan(), squares[13].hasQuan());
 	}
 
 	public void draw(Graphics2D g2d) {

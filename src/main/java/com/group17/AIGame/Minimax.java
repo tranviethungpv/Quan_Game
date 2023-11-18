@@ -63,9 +63,9 @@ public class Minimax {
 					// khoi phuc trang thai ban co cu
 					for (int j = 0; j < 14; j++) {
 						if (j == 0 || j == 6) {
-							squares[j] = new Square(j, valueRoot[j], true);
+							squares[j] = new Square(j, valueRoot[j], true, true);
 						} else {
-							squares[j] = new Square(j, valueRoot[j], false);
+							squares[j] = new Square(j, valueRoot[j], false, false);
 						}
 					}
 				}

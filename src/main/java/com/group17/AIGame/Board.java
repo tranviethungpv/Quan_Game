@@ -2,6 +2,8 @@ package com.group17.AIGame;
 
 import java.util.ArrayList;
 
+import com.group17.application.GamePanel;
+
 public class Board {
 	private Square[] squares;
 	private ArrayList<Result> results;
@@ -11,15 +13,15 @@ public class Board {
 		squares = new Square[14];
 		for (int i = 0; i < 12; i++) {
 			if (i % 6 != 0) {
-				squares[i] = new Square(i, 5, false);
+				squares[i] = new Square(i, 5, false, false);
 			} else if (i == 0) {
-				squares[i] = new Square(i, 10, true);
+				squares[i] = new Square(i, 10, true, true);
 			} else {
-				squares[i] = new Square(i, 10, true);
+				squares[i] = new Square(i, 10, true, true);
 			}
 		}
-		squares[12] = new Square(12, 0, false);
-		squares[13] = new Square(13, 0, false);
+		squares[12] = new Square(12, 0, false, false);
+		squares[13] = new Square(13, 0, false, false);
 	}
 
 	// hanh dong
@@ -42,7 +44,7 @@ public class Board {
 	public Square[] adapter(Square[] squares) {
 		Square[] s = new Square[squares.length];
 		for (int i = 0; i < s.length; i++) {
-			s[i] = new Square(i, squares[i].getValue(), squares[i].isQuan());
+			s[i] = new Square(i, squares[i].getValue(), squares[i].isQuan(), squares[i].hasQuan());
 		}
 		return s;
 	}
@@ -127,6 +129,28 @@ public class Board {
 				// System.out.println(score);
 				squares[viTri].setValue(0);
 				// printBanCo();
+
+				if (squares[viTri].hasQuan()) {
+					squares[viTri].setHasQuan(false);
+				}
+
+				// Khi ô 0 bị ăn và là lượt của player 1
+				if (viTri == 0 && GamePanel.player == 1) {
+					squares[12].setHasQuan(true);
+				}
+				// Khi ô 6 bị ăn và là lượt của player 2
+				if (viTri == 6 && GamePanel.player == 2) {
+					squares[13].setHasQuan(true);
+				}
+				// Khi ô 0 bị ăn và là lượt của player 2
+				if (viTri == 0 && GamePanel.player == 2) {
+					squares[13].setHasQuan(true);
+				}
+				// Khi ô 6 bị ăn và là lượt của player 1
+				if (viTri == 6 && GamePanel.player == 1) {
+					squares[12].setHasQuan(true);
+				}
+
 				Result result = new Result(adapter(squares));
 				results.add(result);
 				viTri++;
@@ -154,6 +178,28 @@ public class Board {
 				int score = squares[viTri].getValue();
 				squares[viTri].setValue(0);
 				// printBanCo();
+
+				if (squares[viTri].hasQuan()) {
+					squares[viTri].setHasQuan(false);
+				}
+				
+				// Khi ô 0 bị ăn và là lượt của player 1
+				if (viTri == 0 && GamePanel.player == 1) {
+					squares[12].setHasQuan(true);
+				}
+				// Khi ô 6 bị ăn và là lượt của player 2
+				if (viTri == 6 && GamePanel.player == 2) {
+					squares[13].setHasQuan(true);
+				}
+				// Khi ô 0 bị ăn và là lượt của player 2
+				if (viTri == 0 && GamePanel.player == 2) {
+					squares[13].setHasQuan(true);
+				}
+				// Khi ô 6 bị ăn và là lượt của player 1
+				if (viTri == 6 && GamePanel.player == 1) {
+					squares[12].setHasQuan(true);
+				}
+
 				Result result = new Result(adapter(squares));
 				results.add(result);
 				viTri--;

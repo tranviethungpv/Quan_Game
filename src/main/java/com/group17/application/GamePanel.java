@@ -28,7 +28,7 @@ public class GamePanel extends JPanel implements Runnable, MouseListener, MouseM
 	private Board board;
 	private BanCo banCo;
 	private AlphaBeta alphaBeta;
-	private int player = 2;
+	public static int player = 2; // người chơi nào đánh trước
 	private int index = 0;
 	private boolean finish, click, raiQuan;
 	private int y = -100, difficult;

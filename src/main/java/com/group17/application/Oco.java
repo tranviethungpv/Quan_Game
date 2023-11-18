@@ -13,10 +13,11 @@ public class Oco {
 	private int x, y, width, height;
 	private int viTri, value;
 	private boolean isQuan;
+	private boolean hasQuan;
 	private Image imageCurrent, imageDefault, imageEntered, imagePressed;
 	private boolean entered;
 
-	public Oco(int x, int y, int width, int height, int viTri, int value, boolean isQuan) {
+	public Oco(int x, int y, int width, int height, int viTri, int value, boolean isQuan, boolean hasQuan) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -24,6 +25,8 @@ public class Oco {
 		this.viTri = viTri;
 		this.value = value;
 		this.isQuan = isQuan;
+		this.hasQuan = hasQuan;
+
 		imageDefault = loadImage("default.png");
 		imageEntered = loadImage("entered.png");
 		imagePressed = loadImage("pressed.png");
@@ -57,15 +60,32 @@ public class Oco {
 			}
 		}
 		g2d.setColor(Color.decode("#48423f"));
+		if (hasQuan) {
+			if (viTri == 0)
+				g2d.fillOval(x + 30, y + 20, 40, 40);
+			if (viTri == 6)
+				g2d.fillOval(x + 20, y + 120, 40, 40);
+			if (viTri == 12)
+				g2d.fillOval(x + 20, y + 3, 40, 40);
+			if (viTri == 13)
+				g2d.fillOval(x, y, 40,  40);
+		}
 		if (isQuan) {
-			for (int i = 0; i < value; i++) {
+			for (int i = 0; i < value - 10; i++) {
 				g2d.fillOval(x + BanCo.boundX[i], y + BanCo.boundY[i] + 35, 13, 10);
 			}
-		} else {
+		}
+		if (viTri == 12 || viTri == 13) {
+			for (int i = 0; i < value - 10; i++) {
+				g2d.fillOval(x + BanCo.boundX[i], y + BanCo.boundY[i], 13, 10);
+			}
+		}
+		if (!isQuan && viTri != 12 && viTri != 13) {
 			for (int i = 0; i < value; i++) {
 				g2d.fillOval(x + BanCo.boundX[i], y + BanCo.boundY[i], 13, 10);
 			}
 		}
+		
 		if (entered) {
 			g2d.drawImage(loadImage("trai.png"), x+2, y, 30, 22, null);
 			g2d.drawImage(loadImage("phai.png"), x+61, y, 30, 22, null);
@@ -132,5 +152,9 @@ public class Oco {
 
 	public Image loadImage(String fileName) {
 		return new ImageIcon(getClass().getResource("/images/" + fileName)).getImage();
+	}
+
+	public boolean hasQuan() {
+		return this.hasQuan;
 	}
 }
